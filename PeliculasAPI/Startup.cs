@@ -13,9 +13,10 @@ namespace PeliculasAPI
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(Startup));
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")
-            //, sqlServerOptions => sqlServerOptions.UseNetTopologySuite()
+           // , sqlServerOptions => sqlServerOptions.UseNetTopologySuite()
             ));
 
             services.AddControllers();
@@ -35,7 +36,7 @@ namespace PeliculasAPI
 
             //app.UseStaticFiles();
 
-            //app.UseRouting();
+            app.UseRouting();
 
             //app.UseAuthorization();
 
